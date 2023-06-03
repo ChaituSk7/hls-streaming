@@ -4,13 +4,13 @@
 #include <gst/gst.h>
 
 typedef struct _HlsStreamData {
+    GstElement *pipeline;
     GstElement *video_source;
     GstElement *video_convert;
     GstElement *clock_overlay;
     GstElement *video_scale;
-    GstElement *caps_filter1;
+    GstElement *caps_filter;
     GstElement *video_encoder;
-    GstElement *caps_filter2;
     GstElement *video_mux;
     GstElement *hls_sink;
     GMainLoop *loop;

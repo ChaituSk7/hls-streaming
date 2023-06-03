@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <title>My live video</title>
+        <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+        <h2>My live video - simple HLS player</h2>
+        <video id="video" controls height="360" width="640" preload="auto"></video>
+        <script>
+            if(Hls.isSupported())
+            {
+                var video = document.getElementById('video');
+                var hls = new Hls();
+                hls.loadSource('playlist.m3u8');
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED,function() 
+                {
+                    video.play();
+                });
+            }
+            else if (video.canPlayType('application/vnd.apple.mpegurl'))
+            {
+                video.src = 'playlist.m3u8';
+                video.addEventListener('canplay',function()
+                {
+                    video.play();
+                });
+            }
+        </script>
+    </body>
+</html>
