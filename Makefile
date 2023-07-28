@@ -19,4 +19,4 @@ run:
 	./exe
 
 clean:
-	rm -rf *.o *.so exe
+	rm -rf *.o *.so exe *.ts *.m3u8
